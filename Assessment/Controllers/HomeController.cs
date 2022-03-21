@@ -94,19 +94,6 @@ namespace Assessment.Controllers
             }
 
             _personService.CreatePerson(_person);
-
-
-            /*
-            if (info.PersonId>0)
-            {
-                _infoService.CreateInfo(info);
-            }
-            */
-
-
-
-
-
             return RedirectToAction("Index");
 
         }
@@ -132,7 +119,13 @@ namespace Assessment.Controllers
             TempData["Message"] ="{id} kişisi silindi.";
             return RedirectToAction("Index");
         }
-
+        public IActionResult Search(string q)
+        {
+            if (string.IsNullOrWhiteSpace(q))
+                return View();
+            var deneme = _personService.GetPersons().Where(a => a.FirstName.Contains(q) || a.LastName.Contains(q)).ToList();
+            return View(deneme);
+        }
     }
 
 }

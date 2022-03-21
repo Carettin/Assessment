@@ -1,4 +1,5 @@
-﻿
+﻿@using Assessment.Entity
+@model List<Person>
 @{
     ViewData["Title"] = "Search";
 }
@@ -16,4 +17,15 @@
     <input type="submit"  value="Submit" class="btn btn-primary"/>
 
 </form>
+
+@if (Model!=null && Model.ToList().Count>0)
+{
+    foreach (var item in Model.ToList())
+    {
+        <div>
+            @item.FirstName @item.LastName
+        </div>
+    }
+
+}
 

@@ -8,6 +8,8 @@
     .div-3 {
         background-color: #FBD603;
     }
+
+     
 </style>
 
 
@@ -26,31 +28,40 @@
     </div>
 
     <div class="form-group">
-        <table>
+        <table class="table table-hover table-bordered small">
+            <thead>
+                <tr>
+                    <th>Telefon </th>
+                    <th>Telefon </th>
+                    <th>Bölge </th>
+                </tr>
+            </thead>
+            <tbody>
             @foreach (var item in _infoService.Getinfos().Where(m => m.PersonId == Model.UUID).ToList())
             {
                 <tr>
-                    <div class="form-group col-md-3">
-                        <label for="Phone">Phone</label>
-                        <input class="div-3" asp-for="@item.Phone" class="form-control" readonly="readonly" />
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="Email">Email</label>
-                        <input class="div-3" asp-for="@item.Email" class="form-control" readonly="readonly" />
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="Location">Location</label>
-                        <input class="div-3" asp-for="@item.Location" class="form-control" readonly="readonly" />
-                    </div>
                     <td>
-                        <a class="btn btn-warning btn-outline-dark" asp-controller="Info" asp-action="Update" asp-route-id="@item.Id">Edit Info >>></a>
+
+                        @item.Phone
+
+                    </td>
+                    <td>@item.Email</td>
+                    <td>@item.Location</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-controller="Info" asp-action="Update" asp-route-id="@item.Id "><i class="fa fa-edit"></i> Edit</a>
                     </td>
                 </tr>
-            }
-            <td>
-                <a class="btn btn-warning btn-outline-dark" asp-controller="Info" asp-action="Create" asp-route-PersonId="@Model.UUID">Add Info</a>
-            </td>
+            }    
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" align="right">
+                        <a class="btn btn-primary btn-sm" asp-controller="Info" asp-action="Create" asp-route-PersonId="@Model.UUID"><i class="fa-solid fa-user-plus"></i> Add</a>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
+         
     </div>
 
 
