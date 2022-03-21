@@ -1,0 +1,8 @@
+Microsoft.AspNetCore.Identity.EntityFrameworkCore version 5.0.15
+Microsoft.AspNetCore.Mvc.NewtonsoftJson version 5.0.15
+Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation version 5.0.15
+Microsoft.EntityFrameworkCore.Design version 5.0.15
+Microsoft.EntityFrameworkCore.SqlServer version 5.0.15
+Microsoft.EntityFrameworkCore.Tools version 5.0.15
+Newtonsoft.Json version 13.0.1
+StackExchange.Redis - version 2.5.43

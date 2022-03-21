@@ -1,0 +1,105 @@
+﻿@using Assessment.Entity
+@model PersonWithLocationModel//IEnumerable<PersonModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h2>Person List</h2>
+    <br />
+
+    <table class="table table-sm table-bordered">
+        <thead class="bg-primary text white">
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Company</th>
+                <th>Info</th>
+                <th></th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model.PersonTableListModels)
+            {
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Company</td>
+                        <td>
+                        @if (item.Bilgiler != null && item.Bilgiler.Count() > 0)
+                        {
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Location</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var info in item.Bilgiler)
+                                    {
+                                            <tr>
+                                                <td>@info.Phone</td>
+                                                <td>@info.Email</td>
+                                                <td>@info.Location</td>
+                                            </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                        }
+                        else
+                        {
+                                <span style="color:red">İnfo Bilgisi Bulunamadı</span>
+                        }
+                        </td>
+
+                        <td>
+                            <a class="btn btn-warning btn-sm" asp-controller="Home" asp-action="Update" asp-route-id="@item.UUID">
+                                Update
+                            </a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@item.UUID">
+                                Delete
+                            </a>
+
+                        </td>
+                    </tr>
+
+            }
+        }
+        </tbody>
+
+    </table>
+    <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Create">
+        Add New Contact
+    </a>
+
+    <hr />
+
+    <table>
+        <thead>
+            <tr>
+                <td>Lokasyon</td>
+                <td>Kişi Sayısı</td>
+                <td>Telefon Sayısı</td>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var locCount in Model.PersonForLocationReportModels.OrderByDescending(m => m.LocationCount))
+        {
+                <tr>
+                    <td>@locCount.Location</td>
+                    <td>@locCount.LocationCount</td>
+                    <td>@locCount.PhoneCount</td>
+                </tr>
+        }
+        </tbody>
+    </table>
+
+
+
+

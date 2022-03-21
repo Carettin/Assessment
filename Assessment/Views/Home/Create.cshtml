@@ -1,0 +1,41 @@
+﻿@using Assessment.Entity
+@model PersonAddOrUpdateModel
+@{
+    ViewData["Title"] = "Create";
+}
+<h2>Create</h2>
+<br />
+<form asp-controller="Home" asp-action="Create" method="post">
+    <div class="form-group col-md-3">
+        <label for="FirstName">FirstName</label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group col-md-3">
+        <label for="LastName">LastName</label>
+        <input asp-for="LastName" class="form-control">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="Company">Company</label>
+        <input asp-for="Company" class="form-control" />
+    </div>
+    
+    <div class="col-md-3">
+        <label>Phone:</label>
+        <input asp-for="Bilgiler.Phone" class="form-control" />
+        <div class="d-md-none mb-2"></div>
+    </div>
+    <div class="col-md-3">
+        <label>Email:</label>
+        <input asp-for="Bilgiler.Email" class="form-control" />
+        <div class="d-md-none mb-2"></div>
+    </div>
+    <div class="col-md-3">
+        <label>Location:</label>
+        <input asp-for="Bilgiler.Location" class="form-control" />
+        <div class="d-md-none mb-2"></div>
+    </div>
+    <br />
+    <br />
+    
+    <input type="submit" value="Submit" class="btn btn-primary" />
+</form>

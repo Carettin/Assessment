@@ -1,0 +1,60 @@
+﻿@using Assessment.Models
+@using Assessment.Services
+
+@inject IInfoService _infoService;
+
+@model PersonAddOrUpdateModel
+<style>
+    .div-3 {
+        background-color: #FBD603;
+    }
+</style>
+
+
+<form asp-controller="Home" asp-action="Update" method="post">
+    <div class="form-group col-md-3">
+        <label for="FirstName">FirstName</label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group col-md-3">
+        <label for="LastName">LastName</label>
+        <input asp-for="LastName" class="form-control">
+    </div>
+    <div class="form-group col-md-3">
+        <label for="Company">Company</label>
+        <input asp-for="Company" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <table>
+            @foreach (var item in _infoService.Getinfos().Where(m => m.PersonId == Model.UUID).ToList())
+            {
+                <tr>
+                    <div class="form-group col-md-3">
+                        <label for="Phone">Phone</label>
+                        <input class="div-3" asp-for="@item.Phone" class="form-control" readonly="readonly" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="Email">Email</label>
+                        <input class="div-3" asp-for="@item.Email" class="form-control" readonly="readonly" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="Location">Location</label>
+                        <input class="div-3" asp-for="@item.Location" class="form-control" readonly="readonly" />
+                    </div>
+                    <td>
+                        <a class="btn btn-warning btn-outline-dark" asp-controller="Info" asp-action="Update" asp-route-id="@item.Id">Edit Info >>></a>
+                    </td>
+                </tr>
+            }
+            <td>
+                <a class="btn btn-warning btn-outline-dark" asp-controller="Info" asp-action="Create" asp-route-PersonId="@Model.UUID">Add Info</a>
+            </td>
+        </table>
+    </div>
+
+
+    <input type="hidden" value="@Model.UUID" asp-for="UUID" />
+    <input type="submit" value="Submit" class="btn btn-primary" />
+
+</form>
