@@ -1,6 +1,6 @@
 # Rehber
 
-    ## Başlarken 
+    ## <h1>Başlarken </h1>
     Bir Rehber dizayn ettim. Bu Rehber'e sonsuz sayıda kişi eklenip, güncellenip, silinebilir.
     Talep edildiği takdirde bu Rehber'de kişiler LINQ ile sorgulanıp arzu edilen listeler oluşturulabilir.
     Projede **EntityFramework, AspNetCore,NetCore, Redis**'den faydalanılmıştır. **Html5** ve **C#** dilleri kullanılmıştır.
